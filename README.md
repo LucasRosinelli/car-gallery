@@ -12,3 +12,7 @@
   - Version: [2.2.107](https://aka.ms/dotnet-download)
 - MongoDB
   - Version: [4.0.10](https://www.mongodb.com/download-center/community)
+
+## Project strucuture
+
+- **./src** folder contains source code
