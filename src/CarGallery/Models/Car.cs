@@ -1,0 +1,33 @@
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
+
+namespace CarGallery.Models
+{
+    public class Car
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+        [BsonElement("Brand")]
+        [BsonRequired]
+        [Required]
+        public string Brand { get; set; }
+        [BsonElement("Model")]
+        [BsonRequired]
+        [Required]
+        public string Model { get; set; }
+        [BsonElement("Year")]
+        [BsonRequired]
+        [Required]
+        public int Year { get; set; }
+        [BsonElement("Currency")]
+        [BsonRequired]
+        [Required]
+        public string Currency { get; set; }
+        [BsonElement("Price")]
+        [BsonRequired]
+        [Required]
+        public decimal Price { get; set; }
+    }
+}
