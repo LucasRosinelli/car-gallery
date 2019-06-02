@@ -53,26 +53,19 @@ namespace CarGallery.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(string id, Car car)
         {
-            try
+            if (id != car.Id)
             {
-                if (id != car.Id)
-                {
-                    return this.NotFound();
-                }
-
-                if (this.ModelState.IsValid)
-                {
-                    this._carService.Update(id, car);
-
-                    return this.RedirectToAction(nameof(this.Index));
-                }
-
-                return this.View(car);
+                return this.NotFound();
             }
-            catch
+
+            if (this.ModelState.IsValid)
             {
-                return this.View();
+                this._carService.Update(id, car);
+
+                return this.RedirectToAction(nameof(this.Index));
             }
+
+            return this.View(car);
         }
 
         public ActionResult Details(string id)
@@ -82,6 +75,34 @@ namespace CarGallery.Controllers
             if (car != null)
             {
                 return this.View(car);
+            }
+
+            return this.NotFound();
+        }
+
+        public ActionResult Delete(string id)
+        {
+            var car = this._carService.Get(id);
+
+            if (car != null)
+            {
+                return this.View(car);
+            }
+
+            return this.NotFound();
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            var car = this._carService.Get(id);
+
+            if (car != null)
+            {
+                this._carService.Remove(car);
+
+                return this.RedirectToAction(nameof(this.Index));
             }
 
             return this.NotFound();
