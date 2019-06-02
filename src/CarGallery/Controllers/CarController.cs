@@ -74,5 +74,17 @@ namespace CarGallery.Controllers
                 return this.View();
             }
         }
+
+        public ActionResult Details(string id)
+        {
+            var car = this._carService.Get(id);
+
+            if (car != null)
+            {
+                return this.View(car);
+            }
+
+            return this.NotFound();
+        }
     }
 }
