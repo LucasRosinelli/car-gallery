@@ -26,6 +26,7 @@ namespace CarGallery.Models
         [Required]
         public string Currency { get; set; }
         [BsonElement("Price")]
+        [BsonRepresentation(BsonType.Decimal128)]
         [BsonRequired]
         [Required]
         public decimal Price { get; set; }
