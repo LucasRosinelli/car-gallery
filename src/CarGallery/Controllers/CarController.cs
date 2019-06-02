@@ -36,5 +36,43 @@ namespace CarGallery.Controllers
 
             return this.View(car);
         }
+
+        public ActionResult Edit(string id)
+        {
+            var car = this._carService.Get(id);
+
+            if (car != null)
+            {
+                return this.View(car);
+            }
+
+            return this.NotFound();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(string id, Car car)
+        {
+            try
+            {
+                if (id != car.Id)
+                {
+                    return this.NotFound();
+                }
+
+                if (this.ModelState.IsValid)
+                {
+                    this._carService.Update(id, car);
+
+                    return this.RedirectToAction(nameof(this.Index));
+                }
+
+                return this.View(car);
+            }
+            catch
+            {
+                return this.View();
+            }
+        }
     }
 }

@@ -22,11 +22,9 @@
                 @Html.DisplayNameFor(model => model.Year)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Currency)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -43,10 +41,10 @@
                     @Html.DisplayFor(modelItem => item.Year)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Currency)
+                    @Html.DisplayFor(modelItem => item.Currency) @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                 </td>
             </tr>
         }
