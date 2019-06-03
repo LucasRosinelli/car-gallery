@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.AspNetCore.Http;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
 
@@ -30,5 +31,9 @@ namespace CarGallery.Models
         [BsonRequired]
         [Required]
         public decimal Price { get; set; }
+        [BsonElement("ImageUrl")]
+        public string ImageUrl { get; set; }
+        [BsonIgnore]
+        public IFormFile ImageFile { get; set; }
     }
 }
