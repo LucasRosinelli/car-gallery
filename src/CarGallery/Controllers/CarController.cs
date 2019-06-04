@@ -39,7 +39,7 @@ namespace CarGallery.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Car car)
+        public ActionResult Create(Car car)
         {
             if (this.ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace CarGallery.Controllers
                     var contentType = car.ImageFile.ContentType;
                     var filePath = Path.Combine(this._carImageUploadLocation, uniqueFileName);
                     car.ImageFile.CopyTo(new FileStream(filePath, FileMode.Create));
-                    car.ImageUrl = Path.Combine(this._carImageUploadLocationSettingValue, uniqueFileName);
+                    car.ImageUrl = Path.Combine("/", this._carImageUploadLocationSettingValue, uniqueFileName);
                 }
                 car = this._carService.Create(car);
 

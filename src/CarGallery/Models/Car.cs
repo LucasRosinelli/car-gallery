@@ -32,8 +32,12 @@ namespace CarGallery.Models
         [Required]
         public decimal Price { get; set; }
         [BsonElement("ImageUrl")]
+        [Display(Name = "Photo")]
+        [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
         [BsonIgnore]
+        [Display(Name = "Photo")]
+        [DataType(DataType.ImageUrl)]
         public IFormFile ImageFile { get; set; }
     }
 }

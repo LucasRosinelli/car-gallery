@@ -34,6 +34,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Currency) @Html.DisplayFor(model => model.Price)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Url.Content(this.Model.ImageUrl)" class="img-fluid" alt="@string.Concat(this.Model.Brand, " ", this.Model.Model, " ", this.Model.Year)" />
+        </dd>
     </dl>
 </div>
 <div>
